@@ -862,11 +862,11 @@ html, body, #root {
    MOBILE TOUCH CONTROLS PANEL
    ========================================================== */
 .mobile-controls-panel {
+  display: none !important;
   position: absolute;
   bottom: 24px;
   left: 50%;
   transform: translateX(-50%);
-  display: flex;
   align-items: center;
   gap: 16px;
   z-index: 80;
@@ -1719,6 +1719,8 @@ html, body, #root {
 }
 
 @media (max-width: 768px) {
+  .control-hints { display: none !important; }
+  .mobile-controls-panel { display: none !important; }
   .nav-container { padding: 0 14px; }
   .nav-logo-text { font-size: 16px; }
   .nav-link-label { display: none; }
@@ -1727,7 +1729,4 @@ html, body, #root {
   .podium-card.gold { transform: none; padding-top: 24px; }
   .champion-crown { display: none; }
   .leaderboard-title, .garage-title { font-size: 30px; }
-  .mobile-controls-panel { bottom: 16px; gap: 10px; }
-  .mobile-touch-btn.lane-btn { height: 56px; }
-  .mobile-touch-btn.boost-btn { height: 62px; }
 }
