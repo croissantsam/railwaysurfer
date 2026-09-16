@@ -1,11 +1,31 @@
 import { createClient, Client } from '@libsql/client';
 
+import path from 'path';
+import os from 'os';
+
 let dbInstance: Client | null = null;
 
 export function getDb(): Client {
   if (!dbInstance) {
+    const tursoUrl = process.env.TURSO_DATABASE_URL || process.env.LIBSQL_URL;
+    const tursoAuthToken = process.env.TURSO_AUTH_TOKEN || process.env.LIBSQL_AUTH_TOKEN;
+    const isVercel = Boolean(process.env.VERCEL || process.env.AWS_LAMBDA_FUNCTION_NAME);
+
+    let dbUrl: string;
+    if (tursoUrl) {
+      dbUrl = tursoUrl;
+    } else if (isVercel) {
+      // In Vercel serverless functions, the root filesystem is read-only.
+      // os.tmpdir() (/tmp) is writable.
+      const tmpPath = path.join(os.tmpdir(), 'highway-rush.db');
+      dbUrl = `file:${tmpPath}`;
+    } else {
+      dbUrl = 'file:highway-rush.db';
+    }
+
     dbInstance = createClient({
-      url: 'file:highway-rush.db',
+      url: dbUrl,
+      authToken: tursoAuthToken,
     });
 
     // Initialize schema synchronously in an async-invoked self-starter
