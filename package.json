@@ -1,0 +1,38 @@
+{
+  "name": "highway-rush",
+  "private": true,
+  "version": "2.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "start": "tsx server.ts",
+    "test:safety": "tsx scripts/test-safety.ts"
+  },
+  "dependencies": {
+    "@libsql/client": "^0.14.0",
+    "@tanstack/react-query": "^5.62.7",
+    "@tanstack/react-router": "1.120.20",
+    "@tanstack/react-start-plugin": "1.120.17",
+    "@tanstack/router-generator": "1.120.20",
+    "@tanstack/router-plugin": "1.120.20",
+    "@tanstack/server-functions-plugin": "1.120.17",
+    "@tanstack/start": "1.120.20",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "three": "^0.174.0",
+    "vinxi": "^0.5.3"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.5",
+    "@types/react": "^19.0.2",
+    "@types/react-dom": "^19.0.2",
+    "@types/three": "^0.174.0",
+    "@vitejs/plugin-react": "^4.3.4",
+    "tsx": "^4.19.3",
+    "typescript": "^5.8.2",
+    "vite": "^6.2.0",
+    "vite-tsconfig-paths": "^5.1.4"
+  }
+}
